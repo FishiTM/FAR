@@ -72,7 +72,7 @@ namespace FAR
 
             // CHECK HASH
             string webServerPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\FAR\FAR-WebServer.exe";
-            string savedHash = "DF07C329A3C46E4C5A6AB8AEDDD983AA";
+            string savedHash = "73D59F562F9FDD73AD8DED8DECA11AC3";
             string checkedHash = "";
             if (Settings.WebServerEnabled)
             {
@@ -84,6 +84,7 @@ namespace FAR
                         using (var stream = File.OpenRead(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\FAR\FAR-WebServer.exe"))
                         {
                             checkedHash = BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "");
+                            Clipboard.SetText(checkedHash);
                         }
                     }
                 }

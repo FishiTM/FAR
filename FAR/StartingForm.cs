@@ -91,7 +91,7 @@ namespace FAR
                 { // DOWNLOAD FILE
                     using (var client = new WebClient())
                     {
-                        client.DownloadFile("https://github.com/FishiTM/FAR/releases/download/Server/FAR-Server.exe", webServerPath);
+                        client.DownloadFile("https://raw.githubusercontent.com/FishiTM/FAR/refs/heads/master/FAR/WebServer/PKG/FAR-Server.exe", webServerPath);
                     }
                 }
             }

@@ -81,7 +81,7 @@ namespace FAR
                 { // CHECK SERVER EXISTENCE
                     using (var md5 = MD5.Create())
                     {
-                        using (var stream = File.OpenRead(@"C:\Users\admin\source\repos\FARWebServer\PKG\FAR-Server.exe"))
+                        using (var stream = File.OpenRead(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\FAR\FAR-WebServer.exe"))
                         {
                             checkedHash = BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "");
                         }
@@ -91,7 +91,7 @@ namespace FAR
                 { // DOWNLOAD FILE
                     using (var client = new WebClient())
                     {
-                        client.DownloadFile("https://tmpfiles.org/dl/15458864/far-server.exe", webServerPath);
+                        client.DownloadFile("https://github.com/FishiTM/FAR/releases/download/Server/FAR-Server.exe", webServerPath);
                     }
                 }
             }

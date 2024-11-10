@@ -170,17 +170,21 @@ namespace FAR
 
             // START WEB SERVER
             webAppThread = new Thread(WebApp.socketIoManager);
-            webServerProcess.StartInfo.FileName = "CMD.exe";
-            webServerProcess.StartInfo.Arguments = @"/c " + Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\FAR\\FAR-WebServer.exe";
+            webServerProcess.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\FAR\\FAR-WebServer.exe";
             webServerProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             if (Settings.WebServerEnabled) { webAppThread.Start(); webServerProcess.Start(); };
         }
         // TRAY MENU FUNCTINOS
         private void TrayMenu_Exit(object sender, EventArgs e)
         {
+
             recoilThread.Abort();
             toggleThread.Abort();
-            try { webAppThread.Abort(); webServerProcess.Kill(); } catch { }
+            if (Settings.WebServerEnabled)
+            {
+                webServerProcess.Kill();
+                webAppThread.Abort();
+            }
             Environment.Exit(0);
         }
         void TrayMenu_UniversalMode(object sender, EventArgs e)
@@ -263,14 +267,22 @@ private void Form1_Shown(object sender, EventArgs e)
         {
             recoilThread.Abort();
             toggleThread.Abort();
-            try { webAppThread.Abort(); webServerProcess.Kill(); } catch { }
+            if (Settings.WebServerEnabled)
+            {
+                webServerProcess.Kill();
+                webAppThread.Abort();
+            }
             Environment.Exit(0);
         }
         private void button1_Click(object sender, EventArgs e)
         {
             recoilThread.Abort();
             toggleThread.Abort();
-            try { webAppThread.Abort(); webServerProcess.Kill(); } catch { }
+            if (Settings.WebServerEnabled)
+            {
+                webServerProcess.Kill();
+                webAppThread.Abort();
+            }
             Environment.Exit(0);
         }
         private void button2_Click(object sender, EventArgs e)

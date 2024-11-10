@@ -151,8 +151,7 @@ namespace FAR
             recoilThread.Start();
             toggleThread = new Thread(Loop.ToggleMethod);
             toggleThread.Start();
-            webAppThread = new Thread(WebApp.socketIoManager);
-            if (Settings.WebServerEnabled) { webAppThread.Start(); };
+            
             MenuItem ConfigMenu = new MenuItem("Configs", TrayMenu_ConfigMode);
             foreach (string Config in ConfigManager.GetAll())
             {
@@ -168,17 +167,20 @@ namespace FAR
             notifyIcon1.ContextMenu.MenuItems[ttl - 1].Enabled = false;
             notifyIcon1.Visible = false;
             UpdateAllStatus();
-            Loop.RunningConfig = ConfigManager.Get("UNIVERSAL");
 
             // START WEB SERVER
+            webAppThread = new Thread(WebApp.socketIoManager);
             webServerProcess.StartInfo.FileName = "CMD.exe";
             webServerProcess.StartInfo.Arguments = @"/c " + Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\FAR\\FAR-WebServer.exe";
             webServerProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            webServerProcess.Start();
+            if (Settings.WebServerEnabled) { webAppThread.Start(); webServerProcess.Start(); };
         }
         // TRAY MENU FUNCTINOS
         private void TrayMenu_Exit(object sender, EventArgs e)
         {
+            recoilThread.Abort();
+            toggleThread.Abort();
+            try { webAppThread.Abort(); webServerProcess.Kill(); } catch { }
             Environment.Exit(0);
         }
         void TrayMenu_UniversalMode(object sender, EventArgs e)

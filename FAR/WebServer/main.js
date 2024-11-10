@@ -17,14 +17,22 @@ app.get('/', (req, res) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Config and Inputs</title>
+    <title>Fishi's Anti Recoil</title>
+    <script>
+    function submitconfig() {
+        document.getElementById('configForm').submit();
+    }
+    function submitdata() {
+        document.getElementById('inputForm').submit();
+    }
+    </script>
 </head>
 <body>
 <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
     <h1>Config Selector</h1>
 
     <!-- Section 1: Dropdown Selector -->
-    <form id="configForm" method="POST" action="http://localhost:3003/config" target="dummyframe">
+    <form id="configForm" method="POST" action="/config" target="dummyframe">
         <label for="configSelect">Select Config:</label>
         <select id="configSelect" name="Config">"` +
                     configsToHTML()
@@ -36,7 +44,7 @@ app.get('/', (req, res) => {
     <h1>Manual Input</h1>
     
     <!-- Section 2: Numerical Inputs -->
-    <form id="inputForm" method="POST" action="http://localhost:3003/data" target="dummyframe">
+    <form id="inputForm" method="POST" action="/data" target="dummyframe">
         <label for="inputX">X:</label>
         <input type="number" id="inputX" name="X" value="0"><br>
 

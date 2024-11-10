@@ -11,7 +11,7 @@ namespace FAR
     internal class Loop
     {
         private static uint Bind = 0x91;
-        public static ConfigManager.Config RunningConfig = null;
+        public static ConfigManager.Config RunningConfig = ConfigManager.Get("UNIVERSAL");
 
         public static void UpdateToggle()
         {

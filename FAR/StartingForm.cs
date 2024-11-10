@@ -71,7 +71,7 @@ namespace FAR
             Settings.WebServerEnabled = checkBox1.Checked;
 
             // CHECK HASH
-            string webServerPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\FAR\\FAR-WebServer.exe";
+            string webServerPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\FAR\FAR-WebServer.exe";
             string savedHash = "DF07C329A3C46E4C5A6AB8AEDDD983AA";
             string checkedHash = "";
             if (Settings.WebServerEnabled)

@@ -169,6 +169,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="WebServer\package-lock.json" />
+    <None Include="WebServer\package.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -184,6 +186,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="retard_fish.ico" />
+    <Content Include="WebServer\main.js" />
+    <Content Include="WebServer\PKG\FAR-Server.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -35,12 +35,9 @@ namespace FAR
             this.button2 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -79,25 +76,16 @@ namespace FAR
             // 
             this.notifyIcon1.Visible = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F);
-            this.label1.Location = new System.Drawing.Point(12, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 14);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Discord Bot Token: ";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F);
-            this.label2.Location = new System.Drawing.Point(12, 73);
+            this.label2.Location = new System.Drawing.Point(12, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 14);
             this.label2.TabIndex = 3;
             this.label2.Text = "Web Panel?: ";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // checkBox1
             // 
@@ -106,7 +94,7 @@ namespace FAR
             this.checkBox1.BackColor = System.Drawing.Color.Red;
             this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.checkBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F);
-            this.checkBox1.Location = new System.Drawing.Point(100, 68);
+            this.checkBox1.Location = new System.Drawing.Point(100, 33);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(69, 24);
             this.checkBox1.TabIndex = 4;
@@ -114,20 +102,12 @@ namespace FAR
             this.checkBox1.UseVisualStyleBackColor = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F);
-            this.textBox1.Location = new System.Drawing.Point(140, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(288, 21);
-            this.textBox1.TabIndex = 5;
-            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F);
-            this.button3.Location = new System.Drawing.Point(15, 98);
+            this.button3.Location = new System.Drawing.Point(16, 63);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(413, 22);
             this.button3.TabIndex = 6;
@@ -135,28 +115,15 @@ namespace FAR
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F);
-            this.label3.Location = new System.Drawing.Point(202, 44);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 14);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "(Discord Bot In The Works)";
-            // 
             // StartingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
-            this.ClientSize = new System.Drawing.Size(441, 132);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(441, 97);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -178,11 +145,8 @@ namespace FAR
         private Button button2;
         private Timer timer1;
         private NotifyIcon notifyIcon1;
-        private Label label1;
         private Label label2;
         private CheckBox checkBox1;
-        private TextBox textBox1;
         private Button button3;
-        private Label label3;
     }
 }

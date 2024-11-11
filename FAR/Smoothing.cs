@@ -9,17 +9,16 @@ namespace FAR
     internal class Smoothing
     {
         private static Random RND = new Random();
-        public static int Calculate(int def, int value)
+        public static int Calculate(int defaultValue, int smoothingValue)
         {
             // SET VALUES
-            int min = def - value;
-            if (min < 0)
-                min = 0;
-            int max = def + value;
+            int minResult = defaultValue - smoothingValue;
+            if (minResult < 0) { minResult = 0; }
+            int maxResult = defaultValue + smoothingValue;
             // CALCULATE
-            int ret = RND.Next(min, max);
+            int returnValue = RND.Next(minResult, maxResult);
             // RETURN
-            return ret;
+            return returnValue;
         }
     }
 }

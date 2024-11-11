@@ -101,28 +101,23 @@ namespace FAR
                 int SprayCount = RunningConfig.Data.Length;
                 int SprayIndex = 0;
                 bool firstBulletDone = false;
-                int[][] configLines = RunningConfig.Data;
                 while ((MnK.GetAsyncKeyState(1) & 0x8000) == 32768 && (MnK.GetAsyncKeyState(2) & 0x8000) == 32768)
                 {
-                    int[] sprayLine = configLines[SprayIndex];
-                    Settings.Recoil.X = Convert.ToInt32(sprayLine[0]);
-                    Settings.Recoil.Y = Convert.ToInt32(sprayLine[1]);
+                    Settings.Recoil.X = (int)RunningConfig.Data[SprayIndex][0];
+                    Settings.Recoil.Y = (int)RunningConfig.Data[SprayIndex][1];
                     try
                     {
-                        Settings.Recoil.Sleep = Convert.ToInt32(sprayLine[2]);
-                    }
-                    catch (Exception)
-                    {
-                        Settings.Recoil.Sleep = 20;
-                    }
+                        Settings.Recoil.Sleep = (int)RunningConfig.Data[SprayIndex][2];
+                    } catch (Exception) { Settings.Recoil.Sleep = 20; }
+                    // TIME SMOOTHING
                     if (Settings.TimeSmoothing)
                     {
                         Thread.Sleep(Smoothing.Calculate(Settings.Recoil.Sleep, Settings.SmoothingValue));
-                    }
-                    else
+                    } else
                     {
                         Thread.Sleep(Settings.Recoil.Sleep);
                     }
+                    // Y SMOOTHING & FIRST BULLET ADDITION
                     int y = Settings.Recoil.Y;
                     if (!firstBulletDone)
                     {
@@ -133,7 +128,9 @@ namespace FAR
                     {
                         y = Smoothing.Calculate(y, Settings.SmoothingValue);
                     }
+                    // MOUSE MOVE
                     MnK.Move(Settings.Recoil.X, y);
+                    // INDEX CHANGE
                     SprayIndex++;
                     if (SprayIndex >= SprayCount)
                     {

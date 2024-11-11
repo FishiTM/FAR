@@ -15,24 +15,23 @@ namespace FAR
             public int firstBullet { get; set; }
         }
 
-        private static string FARPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\FAR";
+        private static readonly string FARPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\FAR";
 
         private static readonly string configsDir = FARPath + "\\Configs\\";
 
         public static List<string> GetAll(bool noDefault = true)
         {
-            List<string> ret = new List<string>();
-            DirectoryInfo dinfo = new DirectoryInfo(configsDir);
-            FileInfo[] Files = dinfo.GetFiles("*.json");
-            FileInfo[] array = Files;
-            foreach (FileInfo file in array)
+            List<string> returnArray = new List<string>();
+            DirectoryInfo dirInfo = new DirectoryInfo(configsDir);
+            FileInfo[] Files = dirInfo.GetFiles("*.json");
+            foreach (FileInfo File in Files)
             {
-                if (!(file.Name == "Default.json" && noDefault))
+                if (!(noDefault && File.Name == "UNIVERSAL.json"))
                 {
-                    ret.Add(file.Name.Replace(".json", string.Empty));
+                    returnArray.Add(File.Name.Replace(".json", string.Empty));
                 }
             }
-            return ret;
+            return returnArray;
         }
 
         public static Config Get(string cfg)

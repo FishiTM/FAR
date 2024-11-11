@@ -66,6 +66,7 @@ namespace FAR
               });
             thread.Start();
         }
+
         private void button3_Click(object sender, EventArgs e)
         {
             // CHECK HASH
@@ -91,12 +92,13 @@ namespace FAR
                 { // DOWNLOAD FILE
                     using (var client = new WebClient())
                     {
+                        ShowMessageBox("Updating Web Server... FAR Will Automatically Open After Updated.");
                         client.DownloadFile("https://raw.githubusercontent.com/FishiTM/FAR/refs/heads/master/FAR/WebServer/PKG/FAR-WebServer.exe", webServerPath);
                     }
                 }
             }
 
-            // // START PROGRAM
+            // START PROGRAM
             this.Hide();
             MainForm MainForm = new MainForm();
             MainForm.Closed += (s, args) => this.Close();

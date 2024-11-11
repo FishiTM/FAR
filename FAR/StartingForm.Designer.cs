@@ -85,7 +85,6 @@ namespace FAR
             this.label2.Size = new System.Drawing.Size(82, 14);
             this.label2.TabIndex = 3;
             this.label2.Text = "Web Panel?: ";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // checkBox1
             // 

@@ -37,7 +37,7 @@ namespace FAR
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Close();
+            Environment.Exit(0);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -68,15 +68,14 @@ namespace FAR
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            Settings.WebServerEnabled = checkBox1.Checked;
-
             // CHECK HASH
             string webServerPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\FAR\FAR-WebServer.exe";
             string savedHash = "73D59F562F9FDD73AD8DED8DECA11AC3";
             string checkedHash = "";
-            if (Settings.WebServerEnabled)
+            if (checkBox1.Checked)
             {
-                
+                Settings.WebServerEnabled = checkBox1.Checked;
+
                 if (File.Exists(webServerPath))
                 { // CHECK SERVER EXISTENCE
                     using (var md5 = MD5.Create())
@@ -84,7 +83,7 @@ namespace FAR
                         using (var stream = File.OpenRead(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\FAR\FAR-WebServer.exe"))
                         {
                             checkedHash = BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "");
-                            Clipboard.SetText(checkedHash);
+                            //Clipboard.SetText(checkedHash); // FOR DEBUG
                         }
                     }
                 }
@@ -102,11 +101,6 @@ namespace FAR
             MainForm MainForm = new MainForm();
             MainForm.Closed += (s, args) => this.Close();
             MainForm.Show();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

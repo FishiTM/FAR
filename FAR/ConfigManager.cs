@@ -34,12 +34,11 @@ namespace FAR
             return returnArray;
         }
 
-        public static Config Get(string cfg)
+        public static Config Get(string configName)
         {
             try
             {
-                Settings.currentConfigName = cfg;
-                string filePath = configsDir + cfg + ".json";
+                string filePath = configsDir + configName + ".json";
                 if (!File.Exists(filePath))
                 {
                     return null;
@@ -68,9 +67,9 @@ namespace FAR
             }
         }
 
-        public static void Create(string name, Config newConfig)
+        public static void Create(string newConfigName, Config newConfig)
         {
-            File.WriteAllText(configsDir + name + ".json", JsonConvert.SerializeObject(newConfig));
+            File.WriteAllText(configsDir + newConfigName + ".json", JsonConvert.SerializeObject(newConfig));
         }
     }
 }

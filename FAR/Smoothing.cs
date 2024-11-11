@@ -9,7 +9,7 @@ namespace FAR
     internal class Smoothing
     {
         private static Random RND = new Random();
-        public static int Calculate(int def, int value = 3)
+        public static int Calculate(int def, int value)
         {
             // SET VALUES
             int min = def - value;

@@ -315,7 +315,6 @@ private void Form1_Shown(object sender, EventArgs e)
             numericUpDown3.Value = Settings.Recoil.Sleep;
             numericUpDown1.Value = Settings.Recoil.X;
             numericUpDown2.Value = Settings.Recoil.Y;
-            Storage.SaveSettings();
             numericUpDown1.Enabled = true;
             numericUpDown2.Enabled = true;
             numericUpDown3.Enabled = true;
